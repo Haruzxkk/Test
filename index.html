@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paine ADM</title>
+    <title>Ls vendedores</title>
     <style>
-        /* Definições básicas de estilo */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,13 +18,12 @@
             height: 100vh;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             overflow: hidden;
-            color: #333;
         }
         .container {
             text-align: center;
             padding: 30px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
             max-width: 400px;
             width: 100%;
@@ -77,12 +75,27 @@
             margin-top: 20px;
             font-size: 18px;
             color: #333;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
         #loginMessage {
             color: #ff4d4d;
             margin-top: 15px;
             font-size: 14px;
             font-weight: bold;
+        }
+        .dashboard-item {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f4fc;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .dashboard-item:hover {
+            transform: translateY(-3px);
         }
 
         /* Animação de entrada */
@@ -105,12 +118,16 @@
     <!-- Dashboard -->
     <div id="dashboard" class="container" style="display: none;">
         <h1>Dashboard</h1>
-        <a href="link_para_mod.apk" class="button" download>Baixar APK do Mod</a>
-        <a href="link_para_free_fire.apk" class="button" download>Baixar APK do Free Fire</a>
-        
-        <button class="button" onclick="gerarLogin('P')">Gerar Login com P</button>
-        <button class="button" onclick="gerarLogin('L')">Gerar Login com L</button>
-
+        <div class="dashboard-item">
+            <a href="link_para_mod.apk" class="button" download>Baixar APK do Mod</a>
+        </div>
+        <div class="dashboard-item">
+            <a href="link_para_free_fire.apk" class="button" download>Baixar APK do Free Fire</a>
+        </div>
+        <div class="dashboard-item">
+            <button class="button" onclick="gerarLogin('P')">Gerar Login com P</button>
+            <button class="button" onclick="gerarLogin('L')">Gerar Login com L</button>
+        </div>
         <div id="loginResult"></div>
     </div>
 
