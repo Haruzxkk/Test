@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paine ADM</title>
+    <style>
+        /* Definições básicas de estilo */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            overflow: hidden;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .input-field {
+            margin: 15px 0;
+            padding: 12px;
+            width: 85%;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+        .input-field:focus {
+            box-shadow: 0px 0px 8px rgba(37, 117, 252, 0.8);
+        }
+        .button {
+            margin: 10px 0;
+            padding: 12px 0;
+            width: 85%;
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        #loginResult {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        #loginMessage {
+            color: #ff4d4d;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Animação de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Painel de Login -->
+    <div id="loginPanel" class="container">
+        <h1>PAINEL ADMIN</h1>
+        <input type="text" id="loginInput" class="input-field" placeholder="LOGIN">
+        <input type="password" id="passwordInput" class="input-field" placeholder="SENHA">
+        <button class="button" onclick="login()">Entrar</button>
+        <div id="loginMessage"></div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="container" style="display: none;">
+        <h1>Dashboard</h1>
+        <a href="link_para_mod.apk" class="button" download>Baixar APK do Mod</a>
+        <a href="link_para_free_fire.apk" class="button" download>Baixar APK do Free Fire</a>
+        
+        <button class="button" onclick="gerarLogin('P')">Gerar Login com P</button>
+        <button class="button" onclick="gerarLogin('L')">Gerar Login com L</button>
+
+        <div id="loginResult"></div>
+    </div>
+
+    <script>
+        // Função de autenticação
+        function login() {
+            const login = document.getElementById("loginInput").value;
+            const senha = document.getElementById("passwordInput").value;
+            
+            if (login === "admin" && senha === "vendedores") {
+                document.getElementById("loginPanel").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+            } else {
+                document.getElementById("loginMessage").innerText = "Login ou senha incorretos!";
+            }
+        }
+
+        // Função de geração de login e senha
+        function gerarLogin(prefixo) {
+            const login = `${prefixo}${Math.floor(Math.random() * 9000) + 1000}`;
+            const senha = `${prefixo}${Math.floor(Math.random() * 9000) + 1000}`;
+            document.getElementById('loginResult').innerHTML = `<strong>LOGIN:</strong> ${login}<br><strong>SENHA:</strong> ${senha}`;
+        }
+    </script>
+</body>
+</html>
